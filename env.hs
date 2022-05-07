@@ -2,10 +2,14 @@ import System.Environment
 import Data.List  
  
 main = do
-    setEnv "foo" "bar"          
-    exeName <- getExecutablePath     
+    putStrLn "executable path:"
+    --this is how the cool kids print stuff though
+    getExecutablePath >>= print 
+    getEnvironment >>= print
+
+    --set env
+    setEnv "foo" "bar"              
     env <- getEnv "foo"
-    putStrLn "executable path:" 
-    putStrLn exeName
     putStrLn "foo:" 
     putStrLn env
+    
